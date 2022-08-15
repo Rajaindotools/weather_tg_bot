@@ -10,7 +10,7 @@ dp = Dispatcher(bot)
 
 @dp.message_handler(commands=['start'])
 async def start_command(message: types.Message):
-    await message.reply("Привет! Напиши город и получи погоду: ")
+    await message.reply("Hello! Write the city and get the weather : ")
 
 @dp.message_handler()
 async def get_weather(message: types.Message):
@@ -30,14 +30,14 @@ async def get_weather(message: types.Message):
             cur_weather_wind_speed = data['wind']['speed']
 
             await message.reply(
-                f'на текущую дату и время погода в городе {city} {datetime.datetime.now().strftime("%Y-%m-%d %H:%M")}\n'
-                f'текущая погода в городе: {city} \nТемпература: {cur_weather_temp} °\nОщущается как: {cur_weather_feels} °\n'
-                f'Влажность: {cur_weather_humidity} % \nДавление: {cur_weather_pressure} мм.рт.ст \nВосход: {cur_weather_sunrise} ч.мин.сек\n'
-                f'Заход: {cur_weather_sunset} ч.мин.сек\nСкорость ветра: {cur_weather_wind_speed} м/сек'
+                f'on the current date and time the weather in the city {city} {datetime.datetime.now().strftime("%Y-%m-%d %H:%M")}\n'
+                f'current weather in the city : {city} \nTemperature: {cur_weather_temp} °\nFeels like: {cur_weather_feels} °\n'
+                f'Humidity : {cur_weather_humidity} % \nPressure: {cur_weather_pressure} мм.рт.ст \nSunrise: {cur_weather_sunrise} h.min.sec\n'
+                f'Sunset : {cur_weather_sunset} h.min.sec\nSpeed wind: {cur_weather_wind_speed} m/s'
                 )
 
         except:
-            await message.reply('проверьте название города')
+            await message.reply('check city name')
 
 if __name__ == '__main__':
     executor.start_polling(dp)
